@@ -1,0 +1,303 @@
+body {
+	background-color: #000;
+}
+
+
+/*Navbar styles
+*/
+.navbar{
+	/*width: 100%;*/
+	margin: 0;
+	padding:0;
+	/* color scheme 1*/
+	
+	/* color scheme 2*/ 
+	background: rgba(47, 47, 47, 0.82);
+	color: white;
+	
+}
+
+.navbar-bg-custom{
+	border:none;
+}
+
+.navbar-form{
+	margin:0;
+	padding: 0;
+	margin-right: 10px;
+}
+
+
+.top-container{
+	background-color: black;
+	width:100%;
+	margin:0;
+	padding: 0;
+
+
+
+}
+.top-row{
+	width: 100%;
+	margin: 15px 0;
+	padding:0;
+	
+}
+.top-row a{
+	visibility: hidden;
+	
+}
+.top-row form{
+	visibility: hidden;
+	
+}
+
+
+.menu-row{
+	width: 100%;
+	margin: 15px 0;
+	padding:0;
+	
+}
+
+.navbar-text {
+	font-size: 15px;
+	text-align: center;
+	margin: 0;
+	padding:0;
+	font-family: helvetica;
+
+	
+}
+
+
+.navbar-text a:link,a:visited, a {
+	text-decoration: none;
+	color: white;
+	
+}
+
+.navbar-text a:hover {
+	color: #7a7a7a;
+}
+
+
+
+/* NAV */
+.nav {
+	font-size: 12px;
+}
+
+
+}
+
+.nav a:hover {
+	color: #7a7a7a;
+}
+
+/*end of navbar styles
+*/
+
+/* CAROUSEL STYLE */
+
+#image1{
+	background-image: url(../images/ozu2.jpg);
+
+}
+
+#image2{
+	background-image: url(../images/norainu2.jpg);
+}
+
+#image3{
+	background-image: url(../images/gojira1.jpg);
+}
+
+#image4{
+	background-image: url(../images/drifter1.jpg);
+}
+
+#image5{
+	background-image: url(../images/house1.jpg);
+}
+
+#image6{
+	background-image: url(../images/tampopo1.jpg);
+}
+
+#image7{
+	background-image: url(../images/rainydog2.jpg);
+}
+
+#image8{
+	background-image: url(../images/spirited2.jpg);
+}
+
+#image9{
+	background-image: url(../images/outrage1.jpg);
+}
+
+
+.carousel-inner .item{
+	width: cover;
+	height: 600px;
+
+}
+
+
+.carousel-caption{
+	margin-bottom: 200px;
+}
+
+.carousel-caption h1{
+	text-align: center;
+	font-size: 60px;
+	color: #fff;
+	opacity: 0.9;
+
+}
+
+#main-jumbo{
+	background-color: #fff;
+}
+
+#sign-up .btn{
+	border: none;
+	font-size: 15px;
+	font-family: helvetica;
+
+}
+
+
+
+
+
+
+
+
+
+/*film banner start*/
+
+
+
+
+
+
+/*ACCORDION START*/
+
+.accordionTitle{
+	text-align: center;
+}
+
+/*ACCORDION END*/
+
+/*FILM PAGE BANNERS START*/
+
+#filmBanner{
+	width: 100%;
+	height: 600px;
+
+}
+
+#filmBanner h1{
+	text-align: center;
+	font-size: 60px;
+	color: #fff;
+	margin-top: 200px;
+
+}
+
+
+/*FILM PAGE BANNERS END*/
+
+/*MAP STARTS*/
+#japanMap{
+	margin-bottom: 60px;
+}
+
+#japanMap h1{
+	text-align: center;
+	color: white;
+}
+/*MAP ENDS*/
+
+/*TIMELINE*/
+
+div .timeline{
+	width: 100%;
+	
+	
+
+}
+
+.timelineSpot{
+	margin-bottom: 50px;
+	background-color: black;
+
+}
+
+
+
+
+#dropdownMenu1{
+	border:5px solid black;
+}
+
+
+/*forms style*/
+.warning{ 
+	border: 1px solid red; 
+	background-color: purple;  
+}
+
+form{
+	display: block;
+	padding:20px;
+	text-align: center;
+
+}
+
+	.formContainer{
+		margin-top: 50px;
+		margin-left: 100px;
+		background-color: white;
+
+	}
+
+
+	
+select {
+	margin-top: 20px;
+	margin-bottom:20px;
+
+}
+
+	form p{
+		display: block;
+		clear:both;
+
+	}
+
+
+	form textarea{
+		display: block;
+		clear:both;
+		float:center;
+
+	}
+
+	form div{
+		display: block;
+		clear:both;
+	}
+
+	form button{
+		display: block;
+		clear:both;
+
+	}
+
+	.ngTimelineItem {
+		color: #C0C0C0;
+	}
+

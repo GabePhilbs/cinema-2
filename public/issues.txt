@@ -1,0 +1,13 @@
+
+ag-webpage.js problems
+	Basically everything broke
+		home:
+			Carrousel not working
+			Forms not hiding
+
+		film:
+			banner not loading
+			accordion not loading
+
+film content
+	How to load stuff from timeline into film display if the use different controllers

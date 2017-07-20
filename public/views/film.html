@@ -1,0 +1,48 @@
+<!-- 
+					END OF HOME
+
+					START FILM -->
+
+		</div>
+		<!-- film body html will be iserted here -->
+		<div id="filmSpot">  <div class="jumbotron" id="filmBanner" class="modalContainer" 
+  ng-style="{'background-image': 'url(' + currentFilm.img + ')'}">
+  <h1 id= "filmBannerTitle"> </h1>
+  <!-- <p>...</p> -->
+ </div>
+
+
+
+ <!-- collapsible accordion start  -->
+		
+
+		 <div id="accordion"  >
+		 
+			  	<h3>Summary</h3>
+
+				<div>
+				  	<p>{{currentFilm.summary}}</p>
+
+				</div>
+
+				<h3  >About {{currentFilm.director.name}}</h3>
+					
+				  		<p>{{currentFilm.director.about}}</p>  		
+
+				<h3>Cast</h3>
+
+				<div>
+				    <p>{{currentFilm.cast}}</p>
+				</div>
+			
+		 </div>
+
+ <!-- collapsible accordion end  --></div>
+
+
+		<!-- body html will be iserted here (old function)-->
+		<div id="bodySpot"></div>
+
+
+
+			<!-- END OF FILM DISPLAY -->

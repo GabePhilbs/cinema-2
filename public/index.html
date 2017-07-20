@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<base href="/">
+
+	<title>Starter Node and Angular</title>
+
+	
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
+
+	<!-- JS -->
+	<script src="libs/angular/angular.min.js"></script>
+	<script src="libs/angular-route/angular-route.min.js"></script>
+
+	<!-- ANGULAR CUSTOM -->
+	<script src="js/controllers/MainCtrl.js"></script>
+	<script src="js/controllers/NerdCtrl.js"></script>
+	<script src="js/services/NerdService.js"></script>
+	<script src="js/controllers/GeekCtrl.js"></script>
+	<script src="js/services/GeekService.js"></script>
+	<script src="js/appRoutes.js"></script>
+	<script src="js/app.js"></script>
+
+	<!-- IMPORTED FROM GABE'S PROJECT -->
+
+
+		<!-- BOOTSTRAP PLUGIN -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Jquery -->
+	 <!-- <link rel="stylesheet" href="timeliner-master/jquery-ui-themes-1.12.1/themes/base/jquery-ui.css"> -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	
+	<!-- accordion -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#accordion" ).accordion();
+  } );
+  </script>
+
+
+
+
+
+
+
+
+	<!-- UI -->	
+	<!--  <link rel="stylesheet" href="timeliner-master/jquery-ui-themes-1.12.1/themes/base/jquery-ui.css">
+ -->
+
+	<!-- Gabe CSS -->
+	<link rel="stylesheet" href="css/gabe-css/style.css">
+	
+
+	<!-- <script type="text/javascript" src="js/var-init.js"></script> -->
+
+
+</head>
+
+<script type="text/javascript"> film = 1; var films =[]; var directors= [];</script>
+<script type="text/javascript">var serverUrl = "https://cine-server-dev.herokuapp.com/"</script>
+
+		<a id="pageTop"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body ng-app="sampleApp" ng-controller="MainController">
+<div class="container">
+	
+	<!-- HEADER -->
+	
+		<nav>
+				 <!-- beginning of the navbar block -->
+
+
+	
+		<!--NAVBAR BEGINS-->
+		<nav class="navbar navbar-default navbar-fixed-top container-fluid ">
+	
+
+		    	<div class="row menu-row">
+
+			    	<div class="navbar-text col-xs-0 col-sm-2 col-md-2 col-lg-4" ></div>
+				    <div class="navbar-text col-xs-3 col-sm-2 col-md-2 col-lg-2" ><a href="#pageTop" class="smoothScroll" id ="homeButton">home</a></div>
+				    <div class="navbar-text col-xs-3 col-sm-2 col-md-2 col-lg-2" ><a href="#timeline" class="smoothScroll">Films</a></div>
+				   <!-- //  <div class="navbar-text col-xs-4 col-sm-2 col-md-1 col-lg-1" ><a href="#">film 2</a></div>
+				   //  <div class="navbar-text col-xs-4 col-sm-2 col-md-1 col-lg-1" ><a href="#">film 3</a></div>
+				   //  <div class="navbar-text col-xs-4 col-sm-2 col-md-1 col-lg-1" ><a href="#">film 4</a></div>    
+				   //  <div class="navbar-text col-xs-4 col-sm-2 col-md-1 col-lg-1" ><a href="#">film 5</a></div> -->
+				   	<div class="navbar-text col-xs-6 col-sm-6 col-md-6 col-lg-4">
+					   <form class="navbar-form navbar-right" role="search">
+		                    <div class="form-group">
+		                        <input type="text" class="form-control" name="username" placeholder="Username">
+		                    </div>
+		                    <div class="form-group">
+		                        <input type="text" class="form-control" name="password" placeholder="Password">
+		                    </div>
+		                    <button type="submit" class="btn btn-default">Sign In</button>
+		            	</form>
+		            </div>
+		    </div>
+		   	
+	
+		  
+		</nav>
+
+<!-- end of the navbar block -->
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- ANGULAR DYNAMIC CONTENT -->
+	<div ng-view></div>
+
+
+
+
+
+
+
+
+
+
+<!-- ANCHOR TO TIMELINE -->
+
+			<a name="timeline"></a>
+
+<div ng-app="cinemaApp" ng-controller="MainController">
+
+			<!--CALL TIMELINE FROM OTHER FILE -->
+			<div class="timelineSpot col-xs-12">
+				
+			</div>
+
+		<!-- ANGULAR TIMELINE -->
+		<div id="ngTimeline">
+			<!-- <div ng-app="cinemaApp" ng-controller="myctrl"> -->
+				<div ng-repeat ="x in decades">
+
+					<h1>{{x}}'s </h1>			
+					<div ng-repeat="y in films" >
+						<div ng-if= "y.decade == x">
+							<a href="#pageTop" class= "ngTimelineItem smoothScroll timelineLink" ng-click="changeFilm(y)">{{y.name}}</a>
+						</div>
+					</div>
+
+				</div>
+
+			<!-- </div> -->
+
+		</div>
+
+
+
+
+
+	</div>
+
+
+<!-- Gabe JS -->
+<script type="text/javascript" src="js/gabe-js/ag-webpage.js"></script>
+
+</body>
+</html>
