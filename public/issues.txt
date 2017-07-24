@@ -11,3 +11,20 @@ ag-webpage.js problems
 
 film content
 	How to load stuff from timeline into film display if the use different controllers
+
+
+
+	Gameplan:
+
+		Jquery and angular don't work well togheter, so kill all Jquery
+
+			link timeline to /film
+
+			Make forms hide and show using ng-if and ng-show , and an array
+
+			Make carousel with angular(if there is time)
+
+			Build accordion with angular (if there is time) (I CAN REUSE A LOT OF THE FORM VIEW CODE)
+
+			Use service to send info from timeline to film display(will learn this monday)
+

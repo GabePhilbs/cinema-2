@@ -94,6 +94,8 @@
 			            <div class="jumbotron" id="main-jumbo">
 			            <div class="container" id="sign-up">
 
+
+			            <!-- FORMVIEW DROPDOWN -->
 			              
 			                <div class="dropdown">
 			                      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -106,92 +108,105 @@
 			                        <li><a id="deleteDrop">Remove Film or Director</a></li>
 			                      </ul>
 			                </div>
+
+
+			               <!--  END OF DROPDOWN -->
+
+
 			                <div id="formSpot">
+
+
+
 			                	<div id="formSpotMessage"></div>
-			                	<div id="formHolder">
-									<div class ="formContainer" id='newDirectorCont'>
 
-										<form id='newDirector' method='post' action='#' onsubmit="checkMyForm(); return false;">
+						            <div id="formHolder">
 
-											<h3>New Director</h3>
-											<!-- name is how the infromation will be identidfied when you get data from the form -->
-									        <div class=row><input id='directorName' name='directorName' ng-model="newDirName" placeholder='Name'></div>
+						            <!-- If  ng-if formview == 1 show this -->
+												<div class ="formContainer" id='newDirectorCont'>
 
+													<form id='newDirector' method='post' action='#' onsubmit="checkMyForm(); return false;">
 
-											<!-- <div class=row><input id='about' name='about' placeholder='About this director'></div> -->
-
-											<textarea id = 'about' name='about' ng-model="newDirAbout" placeholder='About this director'></textarea>
-
-											<button type="button" id='addDirectorButton' ng-click="newDir()">Add director</button>
-
-										</form>
-									</div>
-
-									<div class ="formContainer " id='addFilmCont'>
-										<form id='newFilm' method='post' action='#' onsubmit="checkMyForm(); return false;">
-
-											<h3>New Film</h3>
-											<select id = "directorSelect" name="directorsSelect" class="directorSelectList">
-																																				
-												<!-- <div class="directorSelectList"></div> -->
-							  				</select>
+														<h3>New Director</h3>
+														<!-- name is how the infromation will be identidfied when you get data from the form -->
+												        <div class=row><input id='directorName' name='directorName' ng-model="newDirName" placeholder='Name'></div>
 
 
+														<!-- <div class=row><input id='about' name='about' placeholder='About this director'></div> -->
 
-											<!-- name is how the infromation will be identidfied when you get data from the form -->
-									        <div class=row><input id='filmName' name='filmName' placeholder='Name'></div>
+														<textarea id = 'about' name='about' ng-model="newDirAbout" placeholder='About this director'></textarea>
 
-									        <textarea id = "summaryField" name="summaryField" form="newFilm" placeholder='Write a summary for this film'></textarea>
+														<button type="button" id='addDirectorButton' ng-click="newDir()">Add director</button>
 
-									        <textarea id="castField" name="castField" form="newFilm" placeholder='Cast'></textarea>
-											
-											<select id= "decadeSelect" name="decadeSelect">
-												<option value="" disabled selected>Decade</option>
-												<option value="1930">1930's</option> 
-												<option value="1940">1940's</option> 
-												<option value="1950">1950's</option> 
-												<option value="1960">1960's</option> 
-												<option value="1970">1970's</option> 
-												<option value="1980">1980's</option>
-												<option value="1990">1990's</option> 
-												<option value="2000">2000's</option> 
-												<option value="2010">2010's</option> 				
-							  				</select>
-											
-							  				<div class=row><input id='imgLink' name='imgLink' placeholder='Image Link'></div>
+													</form>
+												</div>
+										<!-- If  ng-if formview == 2 show this -->
+												<div class ="formContainer " id='addFilmCont'>
+													<form id='newFilm' method='post' action='#' onsubmit="checkMyForm(); return false;">
+
+														<h3>New Film</h3>
+														<select id = "directorSelect" name="directorsSelect" class="directorSelectList">
+																																							
+															<!-- <div class="directorSelectList"></div> -->
+										  				</select>
 
 
-											<button type="button" id='addFilmButton'>Add Film</button>
 
-										</form>
-									</div>
+														<!-- name is how the infromation will be identidfied when you get data from the form -->
+												        <div class=row><input id='filmName' name='filmName' placeholder='Name'></div>
 
-									<div class ="formContainer" id='deleteCont'>
-										<form id='delete' method='post' action='#' onsubmit="checkMyForm(); return false;">
+												        <textarea id = "summaryField" name="summaryField" form="newFilm" placeholder='Write a summary for this film'></textarea>
 
-											<h3>Delete Film or Director</h3>
-											<!-- name is how the infromation will be identidfied when you get data from the form -->
-									        <select id="directorsDelete" name="directorsDelete" class="directorSelectList">
-												<option value="" selected="selected">Director</option>
-										
-							  				</select>
+												        <textarea id="castField" name="castField" form="newFilm" placeholder='Cast'></textarea>
+														
+														<select id= "decadeSelect" name="decadeSelect">
+															<option value="" disabled selected>Decade</option>
+															<option value="1930">1930's</option> 
+															<option value="1940">1940's</option> 
+															<option value="1950">1950's</option> 
+															<option value="1960">1960's</option> 
+															<option value="1970">1970's</option> 
+															<option value="1980">1980's</option>
+															<option value="1990">1990's</option> 
+															<option value="2000">2000's</option> 
+															<option value="2010">2010's</option> 				
+										  				</select>
+														
+										  				<div class=row><input id='imgLink' name='imgLink' placeholder='Image Link'></div>
 
-											
-											<p>and/or</p>
-											
 
-											<select id="filmSelect" name="filmSelect" class="filmSelectList">
-												<option value="" selected="selected">Film</option>
+														<button type="button" id='addFilmButton'>Add Film</button>
 
+													</form>
+												</div>
+
+										<!-- If  ng-if formview == 3 show this -->
 												
-							  				</select>
+												<div class ="formContainer" id='deleteCont'>
+													<form id='delete' method='post' action='#' onsubmit="checkMyForm(); return false;">
+
+														<h3>Delete Film or Director</h3>
+														<!-- name is how the infromation will be identidfied when you get data from the form -->
+												        <select id="directorsDelete" name="directorsDelete" class="directorSelectList">
+															<option value="" selected="selected">Director</option>
+													
+										  				</select>
+
+														
+														<p>and/or</p>
+														
+
+														<select id="filmSelect" name="filmSelect" class="filmSelectList">
+															<option value="" selected="selected">Film</option>
+
+															
+										  				</select>
 
 
-											<button type="button" id='deleteButton'>Delete</button>
+														<button type="button" id='deleteButton'>Delete</button>
 
-										</form>
+													</form>
 
-								</div>
+											</div>
 								</div>
 
 			                </div>

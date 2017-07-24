@@ -1,4 +1,4 @@
-angular.module('MainCtrl', []).controller('MainController', function($scope, $http) {
+angular.module('MainCtrl', []).controller('MainController', function($scope, $http, $location) {
 
 	// TIMELINE
 
@@ -35,6 +35,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 					}
 				}
 				console.log($scope.currentFilm);
+				 $location.path('/film');
 			}
 
 						//FORM STUFF
@@ -52,6 +53,9 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 
 			}
 
+			$scope.goHome = function(){
+				 $location.path('/');
+			}
 
 
 

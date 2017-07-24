@@ -230,42 +230,42 @@ $('#addFilmButton').click(function(){
 	}
 );
 
-$('#addDirectorButton').click(function(){
-	// var bla = $('#filmName').val();
-	console.log("button clicked");
-	$('#formSpotMessage').html("");
+// $('#addDirectorButton').click(function(){
+// 	// var bla = $('#filmName').val();
+// 	console.log("button clicked");
+// 	$('#formSpotMessage').html("");
 	
-		var directorFromForm ={
-			name: $('#directorName').val() ,
-			about: $('#about').val() ,
-			} 
+// 		var directorFromForm ={
+// 			name: $('#directorName').val() ,
+// 			about: $('#about').val() ,
+// 			} 
 
-			$('#directorName').val('') ,
-			$('#about').val('') ,
-		console.log(directorFromForm);
-
-
-
-	//.POST  DIRECTOR 	HERE
+// 			$('#directorName').val('') ,
+// 			$('#about').val('') ,
+// 		console.log(directorFromForm);
 
 
-	$.post(serverUrl+"new-director", directorFromForm, function(data){
+
+// 	//.POST  DIRECTOR 	HERE
+
+
+// 	$.post(serverUrl+"new-director", directorFromForm, function(data){
 	 		 	
 
-	 		 	console.log(data);
-	 		 	refreshTimeline();
-	 		 	insertContent();
-	 		 });
+// 	 		 	console.log(data);
+// 	 		 	refreshTimeline();
+// 	 		 	insertContent();
+// 	 		 });
 
 
 
-	//MESSAGE FORM	
-	$('#formSpotMessage').html("FORM SENT");
+// 	//MESSAGE FORM	
+// 	$('#formSpotMessage').html("FORM SENT");
 
-	loadDeleteLists();
+// 	loadDeleteLists();
 
-	}
-);
+// 	}
+// );
 
 
 $('#deleteButton').click(function(){

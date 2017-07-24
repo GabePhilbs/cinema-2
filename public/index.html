@@ -62,7 +62,7 @@
 	
 
 	<!-- <script type="text/javascript" src="js/var-init.js"></script> -->
-
+	<!-- <script type="text/javascript" src="js/smoothscroll.js"></script> -->
 
 </head>
 
@@ -100,7 +100,7 @@
 		    	<div class="row menu-row">
 
 			    	<div class="navbar-text col-xs-0 col-sm-2 col-md-2 col-lg-4" ></div>
-				    <div class="navbar-text col-xs-3 col-sm-2 col-md-2 col-lg-2" ><a href="#pageTop" class="smoothScroll" id ="homeButton">home</a></div>
+				    <div class="navbar-text col-xs-3 col-sm-2 col-md-2 col-lg-2" ><a href="#pageTop" class="smoothScroll" id ="homeButton" ng-click="goHome()">home</a></div>
 				    <div class="navbar-text col-xs-3 col-sm-2 col-md-2 col-lg-2" ><a href="#timeline" class="smoothScroll">Films</a></div>
 				   <!-- //  <div class="navbar-text col-xs-4 col-sm-2 col-md-1 col-lg-1" ><a href="#">film 2</a></div>
 				   //  <div class="navbar-text col-xs-4 col-sm-2 col-md-1 col-lg-1" ><a href="#">film 3</a></div>
@@ -152,11 +152,13 @@
 
 
 
+
+
 <!-- ANCHOR TO TIMELINE -->
 
 			<a name="timeline"></a>
 
-<div ng-app="cinemaApp" ng-controller="MainController">
+<div >
 
 			<!--CALL TIMELINE FROM OTHER FILE -->
 			<div class="timelineSpot col-xs-12">
