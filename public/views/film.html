@@ -16,28 +16,31 @@
  <!-- collapsible accordion start  -->
 		
 
-		 <div id="accordion"  >
+		 <div class="accordion"  >
 		 
-			  	<h3>Summary</h3>
+			  	<h4 ng-click="acordionSelect(0)">Summary</h3>
 
-				<div>
-				  	<p>{{currentFilm.summary}}</p>
+					<div ng-if="accordionIndex == 0">
+				  		<p>{{currentFilm.summary}}</p>
 
-				</div>
+					</div>
 
-				<h3  >About {{currentFilm.director.name}}</h3>
+				<h4  ng-click="acordionSelect(1)">About {{currentFilm.director.name}}</h3>
 					
-				  		<p>{{currentFilm.director.about}}</p>  		
+					<div ng-if="accordionIndex == 1">
+				  		<p>{{currentFilm.director.about}}</p> 
+				  	</div> 		
 
-				<h3>Cast</h3>
+				<h4 ng-click="acordionSelect(2)">Cast</h3>
 
-				<div>
-				    <p>{{currentFilm.cast}}</p>
-				</div>
+					<div ng-if="accordionIndex == 2">
+					    <p>{{currentFilm.cast}}</p>
+					</div>
 			
 		 </div>
 
- <!-- collapsible accordion end  --></div>
+ <!-- collapsible accordion end  -->
+ </div>
 
 
 		<!-- body html will be iserted here (old function)-->

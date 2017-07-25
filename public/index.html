@@ -22,6 +22,8 @@
 	<script src="js/services/NerdService.js"></script>
 	<script src="js/controllers/GeekCtrl.js"></script>
 	<script src="js/services/GeekService.js"></script>
+	<script src="js/services/FilmService.js"></script>
+
 	<script src="js/appRoutes.js"></script>
 	<script src="js/app.js"></script>
 
@@ -69,16 +71,7 @@
 <script type="text/javascript"> film = 1; var films =[]; var directors= [];</script>
 <script type="text/javascript">var serverUrl = "https://cine-server-dev.herokuapp.com/"</script>
 
-		<a id="pageTop"></a>
-
-
-
-
-
-
-
-
-
+		
 
 
 
@@ -99,14 +92,14 @@
 
 		    	<div class="row menu-row">
 
-			    	<div class="navbar-text col-xs-0 col-sm-2 col-md-2 col-lg-4" ></div>
+			    	<div class="navbar-text col-xs-3 col-sm-4 col-md-4 col-lg-4" ></div>
 				    <div class="navbar-text col-xs-3 col-sm-2 col-md-2 col-lg-2" ><a href="#pageTop" class="smoothScroll" id ="homeButton" ng-click="goHome()">home</a></div>
 				    <div class="navbar-text col-xs-3 col-sm-2 col-md-2 col-lg-2" ><a href="#timeline" class="smoothScroll">Films</a></div>
 				   <!-- //  <div class="navbar-text col-xs-4 col-sm-2 col-md-1 col-lg-1" ><a href="#">film 2</a></div>
 				   //  <div class="navbar-text col-xs-4 col-sm-2 col-md-1 col-lg-1" ><a href="#">film 3</a></div>
 				   //  <div class="navbar-text col-xs-4 col-sm-2 col-md-1 col-lg-1" ><a href="#">film 4</a></div>    
 				   //  <div class="navbar-text col-xs-4 col-sm-2 col-md-1 col-lg-1" ><a href="#">film 5</a></div> -->
-				   	<div class="navbar-text col-xs-6 col-sm-6 col-md-6 col-lg-4">
+				   	<!-- <div class="navbar-text col-xs-6 col-sm-6 col-md-6 col-lg-4">
 					   <form class="navbar-form navbar-right" role="search">
 		                    <div class="form-group">
 		                        <input type="text" class="form-control" name="username" placeholder="Username">
@@ -116,7 +109,7 @@
 		                    </div>
 		                    <button type="submit" class="btn btn-default">Sign In</button>
 		            	</form>
-		            </div>
+		            </div> -->
 		    </div>
 		   	
 	
@@ -129,6 +122,7 @@
 
 
 
+<a id="pageTop"></a>
 
 
 

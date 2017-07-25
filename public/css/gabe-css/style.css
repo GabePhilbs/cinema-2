@@ -184,6 +184,25 @@ body {
 
 
 /*ACCORDION START*/
+.accordion{
+	background-color: white;
+	text-align: center;
+}
+
+.accordion h4{
+	border: 1px solid black;
+	margin: 0;
+	background-color:#E8E8EE
+}
+
+
+.accordion h4:hover{
+	background-color:#26466D
+}
+
+.accordion h4:active{
+	background-color:#0000FF
+}
 
 .accordionTitle{
 	text-align: center;
@@ -269,6 +288,8 @@ form{
 select {
 	margin-top: 20px;
 	margin-bottom:20px;
+	clear:both;
+	width: 100%;
 
 }
 

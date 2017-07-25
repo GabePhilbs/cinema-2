@@ -86,6 +86,18 @@
 
 					</div>
 
+
+					<!--Angular carousel-->
+
+					
+
+
+
+
+
+
+
+
 					<!--END CAROUSEL-->
 
 					<!--START JUMBOTRON -->
@@ -96,8 +108,13 @@
 
 
 			            <!-- FORMVIEW DROPDOWN -->
+
+
+
 			              
-			                <div class="dropdown">
+<!-- 			                <div class="dropdown">
+
+
 			                      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 			                    EDIT FILM LIST
 			                        <span class="caret"></span>
@@ -107,31 +124,44 @@
 			                        <li><a id="addFilmDrop">Add Film</a></li>
 			                        <li><a id="deleteDrop">Remove Film or Director</a></li>
 			                      </ul>
+			                </div> -->
+			                <div id="angDropdown">
+			                	<select ng-model="selectedForm" >
+			                		<option ng-repeat="x in forms" value="{{x}}">{{x}}</option>
+			                	 </select>
 			                </div>
 
 
+
+
+			               
 			               <!--  END OF DROPDOWN -->
 
 
-			                <div id="formSpot">
 
+
+			                <div id="formSpot">
 
 
 			                	<div id="formSpotMessage"></div>
 
 						            <div id="formHolder">
 
+						          
+
+
+
 						            <!-- If  ng-if formview == 1 show this -->
-												<div class ="formContainer" id='newDirectorCont'>
+												<div ng-if="selectedForm == forms[0]"  class ="formContainer " id='newDirectorCont'>
 
 													<form id='newDirector' method='post' action='#' onsubmit="checkMyForm(); return false;">
 
 														<h3>New Director</h3>
-														<!-- name is how the infromation will be identidfied when you get data from the form -->
+
+														
 												        <div class=row><input id='directorName' name='directorName' ng-model="newDirName" placeholder='Name'></div>
 
 
-														<!-- <div class=row><input id='about' name='about' placeholder='About this director'></div> -->
 
 														<textarea id = 'about' name='about' ng-model="newDirAbout" placeholder='About this director'></textarea>
 
@@ -140,11 +170,12 @@
 													</form>
 												</div>
 										<!-- If  ng-if formview == 2 show this -->
-												<div class ="formContainer " id='addFilmCont'>
+												<div ng-if="selectedForm == forms[1]" class ="formContainer " id='addFilmCont'>
 													<form id='newFilm' method='post' action='#' onsubmit="checkMyForm(); return false;">
 
 														<h3>New Film</h3>
-														<select id = "directorSelect" name="directorsSelect" class="directorSelectList">
+														<select ng-model="directorSelect" >
+			                									<option ng-repeat="x in directors" value="{{x.name}}">{{x.name}}</option>
 																																							
 															<!-- <div class="directorSelectList"></div> -->
 										  				</select>
@@ -152,13 +183,13 @@
 
 
 														<!-- name is how the infromation will be identidfied when you get data from the form -->
-												        <div class=row><input id='filmName' name='filmName' placeholder='Name'></div>
+												        <div class=row><input id='filmName' name='filmName' placeholder='Name' ng-model='addFilmName'></div>
 
-												        <textarea id = "summaryField" name="summaryField" form="newFilm" placeholder='Write a summary for this film'></textarea>
+												        <textarea id = "summaryField" name="summaryField" form="newFilm" placeholder='Write a summary for this film' ng-model='addFilmSummary'></textarea>
 
-												        <textarea id="castField" name="castField" form="newFilm" placeholder='Cast'></textarea>
+												        <textarea id="castField" name="castField" form="newFilm" placeholder='Cast' ng-model='addFilmCast'></textarea>
 														
-														<select id= "decadeSelect" name="decadeSelect">
+														<select id= "decadeSelect" name="decadeSelect" ng-model='decadeSelect'>
 															<option value="" disabled selected>Decade</option>
 															<option value="1930">1930's</option> 
 															<option value="1940">1940's</option> 
@@ -171,38 +202,39 @@
 															<option value="2010">2010's</option> 				
 										  				</select>
 														
-										  				<div class=row><input id='imgLink' name='imgLink' placeholder='Image Link'></div>
+										  				<div class=row><input id='imgLink' name='imgLink' placeholder='Image Link' ng-model='addFilmImg'></div>
 
 
-														<button type="button" id='addFilmButton'>Add Film</button>
+														<button type="button" id='addFilmButton' ng-click="newFilm()" >Add Film</button>
 
 													</form>
 												</div>
 
 										<!-- If  ng-if formview == 3 show this -->
 												
-												<div class ="formContainer" id='deleteCont'>
+												<div ng-if="selectedForm == forms[2]" class ="formContainer " id='deleteCont'>
 													<form id='delete' method='post' action='#' onsubmit="checkMyForm(); return false;">
 
 														<h3>Delete Film or Director</h3>
 														<!-- name is how the infromation will be identidfied when you get data from the form -->
-												        <select id="directorsDelete" name="directorsDelete" class="directorSelectList">
-															<option value="" selected="selected">Director</option>
-													
+												        <select ng-model="directorSelectDel" >
+			                									<option ng-repeat="x in directors" value="{{x.name}}">{{x.name}}</option>
+																																							
+															<!-- <div class="directorSelectList"></div> -->
 										  				</select>
 
 														
 														<p>and/or</p>
 														
 
-														<select id="filmSelect" name="filmSelect" class="filmSelectList">
-															<option value="" selected="selected">Film</option>
-
-															
+														<select ng-model="filmSelectDel" >
+			                									<option ng-repeat="x in films" value="{{x.name}}">{{x.name}}</option>
+																																							
+															<!-- <div class="directorSelectList"></div> -->
 										  				</select>
 
 
-														<button type="button" id='deleteButton'>Delete</button>
+														<button type="button" id='deleteButton' ng-click="deleteStuff()">Delete</button>
 
 													</form>
 

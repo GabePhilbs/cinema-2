@@ -1,21 +1,49 @@
-angular.module('MainCtrl', []).controller('MainController', function($scope, $http, $location) {
+angular.module('MainCtrl', []).controller('MainController', function($scope, $http, $location, FilmServ,$rootScope) {
+				$scope.selectedForm = 1;
+				$scope.formDisplayFilm =true;
+				$scope.formDisplayDir =true;
+				$scope.formDisplayDel =true;
+
+				$scope.lumpsy = 2;
+				$scope.formDisplay = false;
+
 
 	// TIMELINE
 
-				$http.get("https://cine-server-dev.herokuapp.com/films").then(function(response){
+				// $http.get("https://cine-server-dev.herokuapp.com/films").then(function(response){
 					
+				// 	$scope.films = response.data;
+				// 	// the .data part is to get just the body with no headers
+				// })
+
+
+
+				// $http.get("https://cine-server-dev.herokuapp.com/directors").then(function(response){
+					
+				// 	$scope.directors = response.data;
+				// 	// the .data part is to get just the body with no headers
+					
+				// })
+
+				
+				var directors =  FilmServ.directors();
+
+				// var films =[]
+
+				FilmServ.films().then(function(response){
 					$scope.films = response.data;
-					// the .data part is to get just the body with no headers
-				})
-
-
-
-				$http.get("https://cine-server-dev.herokuapp.com/directors").then(function(response){
 					
+				});
+
+				FilmServ.directors().then(function(response){
 					$scope.directors = response.data;
-					// the .data part is to get just the body with no headers
 					
-				})
+				});
+				
+				
+
+				
+				
 
 			
 
@@ -24,17 +52,22 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 				
 			
 			//FILM PAGE CONTENT
-			$scope.changeFilm =function(clickedFilm){
+			$scope.changeFilm = function(clickedFilm){
 
 				$scope.currentFilm = clickedFilm;
-				for(var i =0; i < directors.length; i++){
+				
+				for(var i =0; i < $scope.directors.length; i++){
 					
-					if(directors[i].name == $scope.currentFilm.director ){
+					
+					if($scope.directors[i].name == $scope.currentFilm.director ){
 						
-						$scope.currentFilm.director = directors[i];
+						$scope.currentFilm.director = $scope.directors[i];
+						
 					}
 				}
-				console.log($scope.currentFilm);
+
+				
+				
 				 $location.path('/film');
 			}
 
@@ -53,13 +86,113 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 
 			}
 
+
+			$scope.newDir = function(){
+
+				var newDir ={};
+
+				newDir.name = $scope.newDirName
+				newDir.about = $scope.newDirAbout
+
+				$http.post(serverUrl+"new-director", newDir)
+				console.log(newDir)
+
+
+				$scope.newDirName ='';
+				$scope.newDirAbout = '';
+
+
+			}
+
+			$scope.newFilm = function(){
+
+				var newFilm ={};
+
+				newFilm.name = $scope.addFilmName
+				newFilm.summary = $scope.addFilmSummary
+				newFilm.cast = $scope.addFilmCast
+				newFilm.decade = $scope.decadeSelect
+				newFilm.director = $scope.directorSelect
+
+
+
+				$http.post(serverUrl+"new-film", newFilm)
+				console.log(newFilm)
+
+
+				$scope.addFilmName ='';
+				$scope.addFilmSummary = '';
+				$scope.addFilmCast = '';
+				$scope.decadeSelect = '';
+				$scope.directorSelect = '';
+
+
+
+
+			}
+
+			$scope.deleteStuff = function(){
+
+			
+
+				
+				filmToDel = $scope.filmSelectDel
+				directorToDel = $scope.directorSelectDel
+
+
+				var stuffToDelete ={filmDel: filmToDel, directorDel: directorToDel};
+
+				$http.post(serverUrl+"delete", stuffToDelete)
+				
+
+				
+
+
+			}
+
+
+
+
+			//form select
+
 			$scope.goHome = function(){
 				 $location.path('/');
 			}
 
 
 
+
+			$scope.mySelect = "Edit Film List"
+
+
+			$scope.forms = ["Add Director", "Add Film", "Delete"];
+
+
+
+
+			//acordion
+			$scope.acordionSelect = function(someNum){
+				 $scope.accordionIndex = someNum;
+				 console.log(someNum);
+			}
+
+
+
+
+			
+
+
+
 			})
+
+
+
+
+
+			
+
+
+
 
 
 
