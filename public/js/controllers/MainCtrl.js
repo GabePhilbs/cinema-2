@@ -1,4 +1,4 @@
-angular.module('MainCtrl', []).controller('MainController', function($scope, $http, $location, FilmServ,$rootScope) {
+angular.module('MainCtrl', []).controller('MainController', function($scope, $http, $location, FilmServ,$rootScope, $interval) {
 				$scope.selectedForm = 1;
 				$scope.formDisplayFilm =true;
 				$scope.formDisplayDir =true;
@@ -28,10 +28,11 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 				
 				var directors =  FilmServ.directors();
 
-				// var films =[]
+				
 
 				FilmServ.films().then(function(response){
 					$scope.films = response.data;
+					runCarousel(response.data);
 					
 				});
 
@@ -81,7 +82,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 				newDir.about = $scope.newDirAbout
 
 				$http.post(serverUrl+"new-director", newDir)
-				console.log(newDir)
+				
 
 
 			}
@@ -95,7 +96,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 				newDir.about = $scope.newDirAbout
 
 				$http.post(serverUrl+"new-director", newDir)
-				console.log(newDir)
+				
 
 
 				$scope.newDirName ='';
@@ -117,7 +118,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 
 
 				$http.post(serverUrl+"new-film", newFilm)
-				console.log(newFilm)
+				
 
 
 				$scope.addFilmName ='';
@@ -165,7 +166,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 			$scope.mySelect = "Edit Film List"
 
 
-			$scope.forms = ["Add Director", "Add Film", "Delete"];
+			$scope.forms = ["Edit Film List","Add Director", "Add Film", "Delete"];
 
 
 
@@ -173,14 +174,39 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 			//acordion
 			$scope.acordionSelect = function(someNum){
 				 $scope.accordionIndex = someNum;
-				 console.log(someNum);
+				 
 			}
 
 
+			var homeIndex =0;
 
+			//carousel -- must run inside the function that calls films
+			function runCarousel(films){
+
+				var filmList = films;
+				setHomeFilm();
+				
+				$interval( function() { setHomeFilm() } , 4000);
+
+				function setHomeFilm(){
+					if(homeIndex < (films.length-1)){
+						
+						$scope.homeFilm = films[homeIndex];
+						homeIndex= homeIndex +1 ;
+						
+					} else {homeIndex = 0}
+
+						
+
+						// console.log(homeFilm);
+
+				}
+				
+
+				
+			}
 
 			
-
 
 
 			})

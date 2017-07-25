@@ -1,5 +1,5 @@
  <!--START CAROUSEL-->
-					<div id="main-carousel" class="carousel slide img-responsive "  data-ride="carousel" >
+					<!-- <div id="main-carousel" class="carousel slide img-responsive "  data-ride="carousel" >
 
 						<ol class ="carousel-indicators">
 							<li data-target="#main-carousel" data-slide-to="0" class="active"></li>
@@ -84,13 +84,24 @@
 						    <span class="sr-only">Next</span>
 						  </a>
 
-					</div>
+					</div> -->
 
 
 					<!--Angular carousel-->
 
-					
 
+
+			
+					<div class="jumbotron" id="homeBanner" class="modalContainer" 
+						  ng-style="{'background-image': 'url(' + homeFilm.img + ')'}">
+						  <h1> Japanese Cinema </h1>
+						  <p>{{homeFilm.name}}</p>
+					 </div>
+
+
+
+
+					 
 
 
 
@@ -126,7 +137,7 @@
 			                      </ul>
 			                </div> -->
 			                <div id="angDropdown">
-			                	<select ng-model="selectedForm" >
+			                	<select ng-model="selectedForm" ng-init=" selectedForm = forms[0]" >
 			                		<option ng-repeat="x in forms" value="{{x}}">{{x}}</option>
 			                	 </select>
 			                </div>
@@ -152,7 +163,7 @@
 
 
 						            <!-- If  ng-if formview == 1 show this -->
-												<div ng-if="selectedForm == forms[0]"  class ="formContainer " id='newDirectorCont'>
+												<div ng-if="selectedForm == forms[1]"  class ="formContainer " id='newDirectorCont'>
 
 													<form id='newDirector' method='post' action='#' onsubmit="checkMyForm(); return false;">
 
@@ -170,7 +181,7 @@
 													</form>
 												</div>
 										<!-- If  ng-if formview == 2 show this -->
-												<div ng-if="selectedForm == forms[1]" class ="formContainer " id='addFilmCont'>
+												<div ng-if="selectedForm == forms[2]" class ="formContainer " id='addFilmCont'>
 													<form id='newFilm' method='post' action='#' onsubmit="checkMyForm(); return false;">
 
 														<h3>New Film</h3>
@@ -212,7 +223,7 @@
 
 										<!-- If  ng-if formview == 3 show this -->
 												
-												<div ng-if="selectedForm == forms[2]" class ="formContainer " id='deleteCont'>
+												<div ng-if="selectedForm == forms[3]" class ="formContainer " id='deleteCont'>
 													<form id='delete' method='post' action='#' onsubmit="checkMyForm(); return false;">
 
 														<h3>Delete Film or Director</h3>
