@@ -303,8 +303,8 @@ select {
 
 	form textarea{
 		display: block;
-		clear:both;
-		float:center;
+		
+		
 
 	}
 
@@ -319,6 +319,38 @@ select {
 
 	}
 
+	input {
+	    width: 100%;
+	    padding: 12px 20px;
+	    margin: 8px 0;
+	    box-sizing: border-box;
+	}
+
+	textarea {
+	    width: 100%;
+	    padding: 12px 20px;
+	    margin: 8px 0;
+	    box-sizing: border-box;
+	}
+
+	#deleteCont{
+		text-align: right;
+	}
+
+	#deleteCont  {
+		margin: 20px;
+		text-align: center;
+	} 
+
+	.filmListForm button{
+		float: right;
+	}
+
+
+
+
+
+
 	.ngTimelineItem {
 		color: #C0C0C0;
 	}
@@ -331,6 +363,12 @@ select {
 		background-color: black;
 		color: #fff;
 	}
+
+.deleteDiv{
+	display: inline;
+}
+
+
 
 
 

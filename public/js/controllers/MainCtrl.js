@@ -26,24 +26,27 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 				// })
 
 				
-				var directors =  FilmServ.directors();
+			
 
-				
+					function refreshData(){	
+		
+						FilmServ.films().then(function(response){
+							$scope.films = response.data;
+							runCarousel(response.data);
+							console.log($scope.films);
 
-				FilmServ.films().then(function(response){
-					$scope.films = response.data;
-					runCarousel(response.data);
-					
-				});
+							
+						});
+		
+						FilmServ.directors().then(function(response){
+							$scope.directors = response.data;
+							console.log($scope.directors);
+						});
 
-				FilmServ.directors().then(function(response){
-					$scope.directors = response.data;
-					
-				});
-				
-				
+						}
+			
 
-				
+				refreshData();
 				
 
 			
@@ -56,6 +59,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 			$scope.changeFilm = function(clickedFilm){
 
 				$scope.currentFilm = clickedFilm;
+				console.log(clickedFilm)
 				
 				for(var i =0; i < $scope.directors.length; i++){
 					
@@ -74,6 +78,8 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 
 						//FORM STUFF
 
+
+
 			$scope.newDir = function(){
 
 				var newDir ={};
@@ -81,26 +87,22 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 				newDir.name = $scope.newDirName
 				newDir.about = $scope.newDirAbout
 
-				$http.post(serverUrl+"new-director", newDir)
+				$http.post(serverUrl+"new-director", newDir).then(function(response, err){
+					if(err){
+						console.log(err);
+					} 
+					console.log(response);
+					refreshData();
+				});
 				
-
-
-			}
-
-
-			$scope.newDir = function(){
-
-				var newDir ={};
-
-				newDir.name = $scope.newDirName
-				newDir.about = $scope.newDirAbout
-
-				$http.post(serverUrl+"new-director", newDir)
+				console.log(newDir);
+				console.log('click');
 				
 
 
 				$scope.newDirName ='';
 				$scope.newDirAbout = '';
+				
 
 
 			}
@@ -109,15 +111,25 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 
 				var newFilm ={};
 
-				newFilm.name = $scope.addFilmName
-				newFilm.summary = $scope.addFilmSummary
-				newFilm.cast = $scope.addFilmCast
-				newFilm.decade = $scope.decadeSelect
-				newFilm.director = $scope.directorSelect
+				newFilm.name = $scope.addFilmName ;
+				newFilm.summary = $scope.addFilmSummary ;
+				newFilm.cast = $scope.addFilmCast ;
+				newFilm.decade = $scope.decadeSelect ;
+				newFilm.director = $scope.directorSelect ;
+				newFilm.img = $scope.addFilmImg ;
 
+				
+				console.log("next film to be posted")
+				console.log(newFilm)
 
-
-				$http.post(serverUrl+"new-film", newFilm)
+				$http.post(serverUrl+"new-film", newFilm).then(function(response, err){
+					if(err){
+						console.log(err);
+						
+					} 
+					console.log(response);
+					refreshData();
+				});
 				
 
 
@@ -126,31 +138,122 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 				$scope.addFilmCast = '';
 				$scope.decadeSelect = '';
 				$scope.directorSelect = '';
+				$scope.addFilmImg = '';
 
 
 
 
 			}
 
-			$scope.deleteStuff = function(){
+			
+
+
+			$scope.deleteFilm = function(){
 
 			
 
 				
 				filmToDel = $scope.filmSelectDel
+				
+				console.log(filmToDel);
+
+				var stuffToDelete ={filmDel: filmToDel};
+
+				console.log(stuffToDelete);
+
+				$http.post(serverUrl+"delete-film", stuffToDelete).then(function(response, err){
+					if(err){
+						console.log(err);
+						
+					} 
+					console.log(response);
+					console.log(here);
+					refreshData();
+				});
+				
+
+			}
+
+
+
+			$scope.deleteDirector = function(){
+
+						
 				directorToDel = $scope.directorSelectDel
 
 
-				var stuffToDelete ={filmDel: filmToDel, directorDel: directorToDel};
+				var stuffToDelete ={directorDel: directorToDel};
 
-				$http.post(serverUrl+"delete", stuffToDelete)
+				$http.post(serverUrl+"delete-director", stuffToDelete).then(function(response, err){
+					if(err){
+						console.log(err);
+						
+					} 
+					console.log(response);
+					console.log(here)
+					refreshData();
+				});
 				
 
-				
+			}
+
+
+
+
+			
+			$scope.loadFilmEdit = function(){
+
+				var newFilm = JSON.parse($scope.filmSelectEdit);
+				console.log(newFilm);
+
+				$scope.filmNameEdit = newFilm.name;
+				$scope.FilmSummaryEdit = newFilm.summary ;
+				$scope.filmCastEdit = newFilm.cast;
+				$scope.decadeSelectEdit = newFilm.decade;
+				$scope.directorSelectEdit = newFilm.director;
+				$scope.FilmImgEdit = newFilm.img;
+
 
 
 			}
 
+			$scope.editFilm = function(){
+
+
+				//Instead of creating this var as null, make sure it has the same values as the selected film
+				var newFilm = JSON.parse($scope.filmSelectEdit);
+
+
+				newFilm.name = $scope.filmNameEdit
+				newFilm.summary = $scope.FilmSummaryEdit
+				newFilm.cast = $scope.filmCastEdit
+				newFilm.decade = $scope.decadeSelectEdit
+				newFilm.director = $scope.directorSelectEdit
+				newFilm.img = $scope.FilmImgEdit 
+
+
+				$http.post(serverUrl+"edit-film", newFilm).then(function(response, err){
+					if(err){
+						console.log(err);
+					} 
+					console.log(response);
+					refreshData();
+				});
+				
+				console.log(newFilm);
+
+
+				$scope.filmNameEdit ='';
+				$scope.FilmSummaryEdit = '';
+				$scope.filmCastEdit = '';
+				$scope.decadeSelectEdit = '';
+				$scope.directorSelectEdit = '';
+				$scope.FilmImgEdit = '';
+
+
+
+
+			}
 
 
 
@@ -166,7 +269,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 			$scope.mySelect = "Edit Film List"
 
 
-			$scope.forms = ["Edit Film List","Add Director", "Add Film", "Delete"];
+			$scope.forms = ["Edit Film List","Add Director", "Add Film", "Delete", "Edit Film"];
 
 
 

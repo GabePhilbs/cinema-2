@@ -30,24 +30,24 @@
 
 // loadBody();
 
-$('#homeButton').click(function(){
-	film = 1;
-	loadBody();
+// $('#homeButton').click(function(){
+// 	film = 1;
+// 	loadBody();
 
-})
+// })
 
 
 
 //STARTING ACCORDION
 
-$( function() {
-    $( "#accordion" ).accordion({
-      collapsible: true
-    });
-  } );
+// $( function() {
+//     $( "#accordion" ).accordion({
+//       collapsible: true
+//     });
+//   } );
 //'About ' + film.director.name
 
-function insertContent(){
+// function insertContent(){
 	// console.log(film.director);
 	// $('#formSpotMessage').html("");
 	// $('#summary').html(film.summary);
@@ -74,15 +74,15 @@ function insertContent(){
 
 
 
-}
+// }
 
-if(film ==1){
+// if(film ==1){
 
-} 
+// } 
 
-else {
-	insertContent();
-};
+// else {
+// 	insertContent();
+// };
 
 
 
